@@ -1,0 +1,262 @@
+// class version 61.0 (61)
+// access flags 0x21
+public class sortowanieBabelkowe {
+
+  // compiled from: sortowanieBabelkowe.java
+  // access flags 0x19
+  public final static INNERCLASS java/lang/invoke/MethodHandles$Lookup java/lang/invoke/MethodHandles Lookup
+
+  // access flags 0x1
+  public <init>()V
+   L0
+    LINENUMBER 1 L0
+    ALOAD 0
+    INVOKESPECIAL java/lang/Object.<init> ()V
+    RETURN
+   L1
+    LOCALVARIABLE this LsortowanieBabelkowe; L0 L1 0
+    MAXSTACK = 1
+    MAXLOCALS = 1
+
+  // access flags 0x9
+  public static bubbleSort([I)V
+   L0
+    LINENUMBER 3 L0
+    ALOAD 0
+    ARRAYLENGTH
+    ISTORE 1
+   L1
+    LINENUMBER 4 L1
+    ICONST_0
+    ISTORE 2
+   L2
+   FRAME APPEND [I I]
+    ILOAD 2
+    ILOAD 1
+    ICONST_1
+    ISUB
+    IF_ICMPGE L3
+   L4
+    LINENUMBER 5 L4
+    ICONST_0
+    ISTORE 3
+   L5
+   FRAME APPEND [I]
+    ILOAD 3
+    ILOAD 1
+    ILOAD 2
+    ISUB
+    ICONST_1
+    ISUB
+    IF_ICMPGE L6
+   L7
+    LINENUMBER 6 L7
+    ALOAD 0
+    ILOAD 3
+    IALOAD
+    ALOAD 0
+    ILOAD 3
+    ICONST_1
+    IADD
+    IALOAD
+    IF_ICMPLE L8
+   L9
+    LINENUMBER 8 L9
+    ALOAD 0
+    ILOAD 3
+    IALOAD
+    ISTORE 4
+   L10
+    LINENUMBER 9 L10
+    ALOAD 0
+    ILOAD 3
+    ALOAD 0
+    ILOAD 3
+    ICONST_1
+    IADD
+    IALOAD
+    IASTORE
+   L11
+    LINENUMBER 10 L11
+    ALOAD 0
+    ILOAD 3
+    ICONST_1
+    IADD
+    ILOAD 4
+    IASTORE
+   L8
+    LINENUMBER 5 L8
+   FRAME SAME
+    IINC 3 1
+    GOTO L5
+   L6
+    LINENUMBER 4 L6
+   FRAME CHOP 1
+    IINC 2 1
+    GOTO L2
+   L3
+    LINENUMBER 14 L3
+   FRAME CHOP 1
+    RETURN
+   L12
+    LOCALVARIABLE temp I L10 L8 4
+    LOCALVARIABLE j I L5 L6 3
+    LOCALVARIABLE i I L2 L3 2
+    LOCALVARIABLE arr [I L0 L12 0
+    LOCALVARIABLE n I L1 L12 1
+    MAXSTACK = 5
+    MAXLOCALS = 5
+
+  // access flags 0x9
+  public static main([Ljava/lang/String;)V
+   L0
+    LINENUMBER 16 L0
+    BIPUSH 7
+    NEWARRAY T_INT
+    DUP
+    ICONST_0
+    ICONST_5
+    IASTORE
+    DUP
+    ICONST_1
+    ICONST_2
+    IASTORE
+    DUP
+    ICONST_2
+    BIPUSH 6
+    IASTORE
+    DUP
+    ICONST_3
+    ICONST_1
+    IASTORE
+    DUP
+    ICONST_4
+    ICONST_3
+    IASTORE
+    DUP
+    ICONST_5
+    BIPUSH 9
+    IASTORE
+    DUP
+    BIPUSH 6
+    ICONST_4
+    IASTORE
+    ASTORE 1
+   L1
+    LINENUMBER 20 L1
+    ICONST_0
+    ISTORE 3
+   L2
+   FRAME APPEND [[I T I]
+    ILOAD 3
+    ALOAD 1
+    ARRAYLENGTH
+    ICONST_1
+    ISUB
+    IF_ICMPGE L3
+   L4
+    LINENUMBER 21 L4
+    ICONST_0
+    ISTORE 4
+   L5
+   FRAME APPEND [I]
+    ILOAD 4
+    ALOAD 1
+    ARRAYLENGTH
+    ILOAD 3
+    ISUB
+    ICONST_1
+    ISUB
+    IF_ICMPGE L6
+   L7
+    LINENUMBER 22 L7
+    ALOAD 1
+    ILOAD 4
+    IALOAD
+    ALOAD 1
+    ILOAD 4
+    ICONST_1
+    IADD
+    IALOAD
+    IF_ICMPLE L8
+   L9
+    LINENUMBER 23 L9
+    ALOAD 1
+    ILOAD 4
+    IALOAD
+    ISTORE 2
+   L10
+    LINENUMBER 24 L10
+    ALOAD 1
+    ILOAD 4
+    ALOAD 1
+    ILOAD 4
+    ICONST_1
+    IADD
+    IALOAD
+    IASTORE
+   L11
+    LINENUMBER 25 L11
+    ALOAD 1
+    ILOAD 4
+    ICONST_1
+    IADD
+    ILOAD 2
+    IASTORE
+   L8
+    LINENUMBER 21 L8
+   FRAME SAME
+    IINC 4 1
+    GOTO L5
+   L6
+    LINENUMBER 20 L6
+   FRAME CHOP 1
+    IINC 3 1
+    GOTO L2
+   L3
+    LINENUMBER 31 L3
+   FRAME CHOP 2
+    GETSTATIC java/lang/System.out : Ljava/io/PrintStream;
+    LDC "Posortowana tablica: "
+    INVOKEVIRTUAL java/io/PrintStream.print (Ljava/lang/String;)V
+   L12
+    LINENUMBER 32 L12
+    ICONST_0
+    ISTORE 3
+   L13
+   FRAME APPEND [T I]
+    ILOAD 3
+    ALOAD 1
+    ARRAYLENGTH
+    IF_ICMPGE L14
+   L15
+    LINENUMBER 33 L15
+    GETSTATIC java/lang/System.out : Ljava/io/PrintStream;
+    ALOAD 1
+    ILOAD 3
+    IALOAD
+    INVOKEDYNAMIC makeConcatWithConstants(I)Ljava/lang/String; [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      "\u0001 "
+    ]
+    INVOKEVIRTUAL java/io/PrintStream.print (Ljava/lang/String;)V
+   L16
+    LINENUMBER 32 L16
+    IINC 3 1
+    GOTO L13
+   L14
+    LINENUMBER 35 L14
+   FRAME CHOP 2
+    RETURN
+   L17
+    LOCALVARIABLE temp I L10 L8 2
+    LOCALVARIABLE j I L5 L6 4
+    LOCALVARIABLE i I L2 L3 3
+    LOCALVARIABLE i I L13 L14 3
+    LOCALVARIABLE args [Ljava/lang/String; L0 L17 0
+    LOCALVARIABLE array [I L1 L17 1
+    MAXSTACK = 5
+    MAXLOCALS = 5
+}
