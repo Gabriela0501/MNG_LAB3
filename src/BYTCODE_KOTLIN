@@ -1,3 +1,18 @@
+//RÓŻNICY POMIĘDZY BYTECODE_JAVA A BYTECODE_KOTLIN:
+//1. są tu wprowadzone dodatkowe metadane potrzebne programowi Kotlin, takiej instrukcji nie było w bytecodzie javy
+//2. deklaracja instancji klasy się zmieniła z INNERCLASS java/lang/invoke/MethodHandles$Lookup java/lang/invoke/MethodHandles Lookup na LSortBabel; INSTANCE
+//3. w bytecode z Kotlina mamy kilka warunków na początku, iż stos lub paramentr nie może być NULL, czego nie ma w bytecode z javy
+//4. w tym bytecode dodajemy na stos ciągi znaków w niektórych miejscach, a w bytecode_java dodjemy tylko liczby
+//5. tutaj mamy również dodatwową deklarację zmiennej - LOCALVARIABLE this LSortBabel; L0 L15 0, która oznacza deklarację zmiennej this, która będzie dostępna pomiedzy instrukcjami Lo i L15, w bytecode java też ją mamy ale tylko w metodzie konstruktora
+//6. możemy tu zauważyć dodatkową metodę static <clinit>()V, której w bytecode_java nie ma, tam nie tworzymy nowego obiektu, a tutaj tworzymy.
+//7. w tym bytecodzie nie mamy również metody konkatenacji stałych łańcuchowych w taki sposób, aby zminimalizować czas wykonania, która jest zawarta w bytecode_java
+//8. Kompilator Java kompiluje plik .Java do pliku .class. Natomiast kompilator Kotlin kompiluje plik .kt do pliku .class
+//9. format klas jest inny w bytecode java jest to 61.0, a tutaj 52.0, flagi dostępu klas również się różnią
+//Na pewno można zauważyć, iż bytecode Kotlina jest o około 100 linijek dłuższy niż bytecode Javy i zawiera zdecydowanie wiecej instrucji, dlatego jest dłuższy
+// Bytecode Kotlin w porównaniu z Bytecode Java posiada aż 22 etykiety cześci kodu L, natomiast w bytecode javy jest to 31 etykiet.
+
+
+
 // class version 52.0 (52)
 // access flags 0x31
 public final class SortBabel {
@@ -7,29 +22,29 @@ public final class SortBabel {
   @Lkotlin/Metadata;(mv={1, 5, 1}, k=1, xi=48, d1={"\u0000&\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\u0008\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0015\n\u0002\u0008\u0002\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0002\u0008\u0002\u0008\u00c6\u0002\u0018\u00002\u00020\u0001B\u0007\u0008\u0002\u00a2\u0006\u0002\u0010\u0002J\u000e\u0010\u0003\u001a\u00020\u00042\u0006\u0010\u0005\u001a\u00020\u0006J\u001b\u0010\u0007\u001a\u00020\u00042\u000c\u0010\u0008\u001a\u0008\u0012\u0004\u0012\u00020\n0\u0009H\u0007\u00a2\u0006\u0002\u0010\u000b\u00a8\u0006\u000c"}, d2={"LSortBabel;", "", "()V", "bubbleSort", "", "arr", "", "main", "args", "", "", "([Ljava/lang/String;)V", "ROK 3"})
 
   // access flags 0x19
-  public final static LSortBabel; INSTANCE
+  public final static LSortBabel; INSTANCE //ta instrukcja to deklaracja instancji klasy LSortBabel
   @Lorg/jetbrains/annotations/NotNull;() // invisible
 
   // access flags 0x2
   private <init>()V
    L0
     LINENUMBER 1 L0
-    ALOAD 0
-    INVOKESPECIAL java/lang/Object.<init> ()V
-    RETURN
+    ALOAD 0 //ta instrukcja ładuje na stos referencję do obiektu, którego konstruktor jest wywoływany
+    INVOKESPECIAL java/lang/Object.<init> ()V //ta instrukcja wywołuje konstruktor klasy nadrzędnej
+    RETURN //ta intrukcja zwraca z metody wartość null
    L1
     LOCALVARIABLE this LSortBabel; L0 L1 0
-    MAXSTACK = 1
-    MAXLOCALS = 1
+    MAXSTACK = 1 //maks liczba elementów stosu
+    MAXLOCALS = 1 //maks liczba lokalnych zmiennych
 
   // access flags 0x11
-  public final bubbleSort([I)V
+  public final bubbleSort([I)V //sygnatura metody bubbleSort, która przyjmuje jako swój jedyny parametr tablicę liczb całkowitych i nic nie zwraca
     // annotable parameter count: 1 (invisible)
-    @Lorg/jetbrains/annotations/NotNull;() // invisible, parameter 0
+    @Lorg/jetbrains/annotations/NotNull;() // invisible, parameter 0 //ta instrukcja wskazuje nam na parametrze metody, że parametr nie może byc nullem
    L0
     ALOAD 1
-    LDC "arr"
-    INVOKESTATIC kotlin/jvm/internal/Intrinsics.checkNotNullParameter (Ljava/lang/Object;Ljava/lang/String;)V
+    LDC "arr" //ta instrukcja umieszcza na stosie ciąg znaków arr
+    INVOKESTATIC kotlin/jvm/internal/Intrinsics.checkNotNullParameter (Ljava/lang/Object;Ljava/lang/String;)V //ta instrukcja to wywołanie statycznej metody, przekazując tablicę liczb całkowitych i ciąg znaków arr jak argumenty, sluży ona do tego by sprawdzić czy tablica jest null czy nie i wyrzuci warunek jesli jest, metoda ta nie wraca niczego
    L1
     LINENUMBER 3 L1
     ALOAD 1
@@ -331,11 +346,11 @@ public final class SortBabel {
 
   // access flags 0x8
   static <clinit>()V
-    NEW SortBabel
-    DUP
+    NEW SortBabel //ta instrukcja tworzy nwy obiekt typu SortBabel na stosie
+    DUP //ta instrukcja duplikuje referencje na obiekt na stosie,aby można było ją wykorzystać do wykonania kolejnych instrukcji
     INVOKESPECIAL SortBabel.<init> ()V
-    PUTSTATIC SortBabel.INSTANCE : LSortBabel;
+    PUTSTATIC SortBabel.INSTANCE : LSortBabel; //ta instrukcja umieszcza nowo utworzona referencje w statycznym polu INSTANCE klasy SortBabel
     RETURN
-    MAXSTACK = 2
+    MAXSTACK = 2 //ta intrukcja oznacza maks liczbę wartości, które mogą znajdować się na stosie
     MAXLOCALS = 0
 }

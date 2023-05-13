@@ -1,5 +1,5 @@
-// class version 61.0 (61)
-// access flags 0x21
+// class version 61.0 (61) - informacja o wersji formatu klasy
+// access flags 0x21 - flagi dostępu klasy, w tym przypadku 0x21 oznacza, że klasa jest publiczna i finalna
 public class sortowanieBabelkowe {
 
   // compiled from: sortowanieBabelkowe.java
@@ -7,35 +7,36 @@ public class sortowanieBabelkowe {
   public final static INNERCLASS java/lang/invoke/MethodHandles$Lookup java/lang/invoke/MethodHandles Lookup
 
   // access flags 0x1
+  //Metoda konstruktora o nazwie <init> jest deklarowana i zawiera kod do inicjalizacji nowego obiektu. W tym przypadku metoda konstruktora jest publiczna i nie ma argumentów
   public <init>()V
    L0
     LINENUMBER 1 L0
-    ALOAD 0
-    INVOKESPECIAL java/lang/Object.<init> ()V
-    RETURN
+    ALOAD 0  //instrukcje z linijek 13 i 14 służą do ładowania referencji do obiektu klasy
+    INVOKESPECIAL java/lang/Object.<init> ()V //instrukcja, która wywołuje konstruktor klasy nadrzędnej
+    RETURN // zakończenie metody konstruktora
    L1
-    LOCALVARIABLE this LsortowanieBabelkowe; L0 L1 0
+    LOCALVARIABLE this LsortowanieBabelkowe; L0 L1 0 //tworzenie zmiennej this , która bedzie dostępna pomiedzy L0 i L1
     MAXSTACK = 1
-    MAXLOCALS = 1
+    MAXLOCALS = 1 //linijki 18,19,20 to informacje o lokalnych zmiennych i wartościach stosu
 
   // access flags 0x9
-  public static bubbleSort([I)V
+  public static bubbleSort([I)V //w tej linijce definiujemy metodę bubbleSort, która jako argument przyjmuje tablicę liczb całkowitych (o typie [I) i nie zwraca żadnej wartości (typ void)
    L0
-    LINENUMBER 3 L0
-    ALOAD 0
-    ARRAYLENGTH
-    ISTORE 1
+    LINENUMBER 3 L0 //ta instrukcja informuje o numerze linii w pliku źródłowym, która odpowiada tej instrukcji
+    ALOAD 0 //ta instrukcja inicjalizuje zmienną lokalną o nazwie 'i' na 0, która będzie wykorzystywana do iterowania po tablicy
+    ARRAYLENGTH //w tej linii rozpoczyna się pętlę while, która będzie powtarzana tak długo, aż zmienna 'i' osiągnie wartość równej długości tablicy pomniejszonej o 1
+    ISTORE 1 //ta linijka zapisuje wartość ze szczytu stosu na pozycję 1 w lokalnej tablicy zmiennych
    L1
     LINENUMBER 4 L1
-    ICONST_0
+    ICONST_0 // umieszczana jest na szczycie stosu stała wartość 0
     ISTORE 2
    L2
-   FRAME APPEND [I I]
-    ILOAD 2
+   FRAME APPEND [I I] //ta instrukcja dodaje nam kolejną zmienną typu int na stos
+    ILOAD 2 //ta instrukcja wczytuje wartość ze zmiennej 2 na stos
     ILOAD 1
     ICONST_1
-    ISUB
-    IF_ICMPGE L3
+    ISUB //ta instrukcja wykonuje odejmowanie, które zdejmuje ze stosu dwie ostatnie wartości i umieszcza wynik na stosie, czyli w tym przypadku ze zmiennej 1 wartosc 1
+    IF_ICMPGE L3 // ta linia wykonuje instrukcję warunkową, która zdejmuje ze stosu jedną wartość, w naszym przypadku wynik odejmowania, i porównuje ją z zerem. Jeśli wynik jest >= 0 to skacze do linii L3, jeśli nie to idzie do dalszych instrukcji w bloku pętli
    L4
     LINENUMBER 5 L4
     ICONST_0
@@ -51,13 +52,13 @@ public class sortowanieBabelkowe {
     IF_ICMPGE L6
    L7
     LINENUMBER 6 L7
-    ALOAD 0
+    ALOAD 0 //ta instrukcja  wykonuje referencje do obiektu z lokalnej zmiennej 0 na stosie
     ILOAD 3
-    IALOAD
+    IALOAD //ta instrukcja zdejmuje ze stosu referencję do tablicy i indeks, a na stos wkłada wartość znajdującą się w tablicy pod wskazanym indeksem
     ALOAD 0
     ILOAD 3
     ICONST_1
-    IADD
+    IADD //ta instrukcja zdejmuje ze stosu dwie ostatnie wartości (indeks i stałą 1), dodaje je i wynik umieszcza na stosie
     IALOAD
     IF_ICMPLE L8
    L9
@@ -86,34 +87,34 @@ public class sortowanieBabelkowe {
     IASTORE
    L8
     LINENUMBER 5 L8
-   FRAME SAME
-    IINC 3 1
-    GOTO L5
+   FRAME SAME //ta linijka mówi nam że ramka stosu na tym etapie jest taka sama jak na poprzedniej pozycji
+    IINC 3 1 //ta instrukcja  inkrementuje wartość zmiennej lokalnej o indeksie 3 o 1
+    GOTO L5 //ta instrukcja skacze do instrukcji oznaczonej przez etykietę L5, czyli wykonuje pętlę while ponownie
    L6
     LINENUMBER 4 L6
    FRAME CHOP 1
     IINC 2 1
     GOTO L2
-   L3
+   L3 //linijki 98,99,100,101 to instrukcje, ktore kończą funkcję i zwracają sterowanie z powrotem do funkcji wywołującej
     LINENUMBER 14 L3
    FRAME CHOP 1
     RETURN
-   L12
-    LOCALVARIABLE temp I L10 L8 4
-    LOCALVARIABLE j I L5 L6 3
-    LOCALVARIABLE i I L2 L3 2
-    LOCALVARIABLE arr [I L0 L12 0
-    LOCALVARIABLE n I L1 L12 1
-    MAXSTACK = 5
-    MAXLOCALS = 5
+   L12 //sekcja zadeklarowanych zmiennych lokalnych
+    LOCALVARIABLE temp I L10 L8 4 //temp to zmienna lokalna, która jest używana do przechowywania wartości podczas zamiany elementów w tablicy
+    LOCALVARIABLE j I L5 L6 3 //j to zmienna lokalna, która jest używana jako iterator pętli wewnętrznej w algorytmie sortowania
+    LOCALVARIABLE i I L2 L3 2 //i to zmienna lokalna, która jest używana jako iterator pętli zewnętrznej w algorytmie sortowania
+    LOCALVARIABLE arr [I L0 L12 0 //arr to zmienna lokalna, która przechowuje referencję do tablicy wejściowej do posortowania
+    LOCALVARIABLE n I L1 L12 1 //n to zmienna lokalna, która przechowuje długość tablicy wejściowej
+    MAXSTACK = 5 //ta instrukcja okresla maks liczby elementow stosu potrzebnych do wywolania funkcji
+    MAXLOCALS = 5 //ta instrukcja okresla maks liczby zmiennych lokalnych, ktore sa uzywane w funkcji
 
   // access flags 0x9
   public static main([Ljava/lang/String;)V
    L0
     LINENUMBER 16 L0
-    BIPUSH 7
-    NEWARRAY T_INT
-    DUP
+    BIPUSH 7 //ta instrukcja wstawia na stos wartość 7
+    NEWARRAY T_INT //ta instrukcja tworzy tablice o rozmiarze podanym w instrukcji wczesniej czyli 7
+    DUP //ta instrukcja kopiuje element na wierzchołku stosu i umieszcza jego kopię na wierzchołku stosu, tworząc tym samym dwie referencje do nowo utworzonej tablicy
     ICONST_0
     ICONST_5
     IASTORE
@@ -147,12 +148,12 @@ public class sortowanieBabelkowe {
     ICONST_0
     ISTORE 3
    L2
-   FRAME APPEND [[I T I]
+   FRAME APPEND [[I T I] //ta instrukcja poszerza ramki stosu o 3 zmienne lokalne: tablicę 2D typu int oraz typ T i wartość typu int
     ILOAD 3
     ALOAD 1
-    ARRAYLENGTH
+    ARRAYLENGTH //ta instrukcja pobiera długość tablicy i umieszcza ją na stosie
     ICONST_1
-    ISUB
+    ISUB //ta instrukcja  pobiera dwie wartości ze stosu (długość tablicy i 1), odejmuje je i umieszcza wynik na stosie
     IF_ICMPGE L3
    L4
     LINENUMBER 21 L4
@@ -215,10 +216,10 @@ public class sortowanieBabelkowe {
     GOTO L2
    L3
     LINENUMBER 31 L3
-   FRAME CHOP 2
-    GETSTATIC java/lang/System.out : Ljava/io/PrintStream;
-    LDC "Posortowana tablica: "
-    INVOKEVIRTUAL java/io/PrintStream.print (Ljava/lang/String;)V
+   FRAME CHOP 2 //ta instrukcja usuwa dwa elementy z ramki stosu
+    GETSTATIC java/lang/System.out : Ljava/io/PrintStream;  //ta instrukcja pobiera pole statyczne "out" z klasy "System", które jest instancją klasy "PrintStream" i umieszcza ją na stosie
+    LDC "Posortowana tablica: " //ta instrukcja ładuje stałą łańcuchową "Posortowana tablica: " na stos
+    INVOKEVIRTUAL java/io/PrintStream.print (Ljava/lang/String;)V //ta instrukcja wywołuje metodę "print" na obiekcie na szczycie stosu, przekazując łańcuch znaków jako argument. Metoda ta wyświetla łańcuch znaków na standardowym wyjściu. Na stosie nie pozostaje żaden element po zakończeniu wykonania tej instrukcji
    L12
     LINENUMBER 32 L12
     ICONST_0
@@ -239,7 +240,7 @@ public class sortowanieBabelkowe {
       // handle kind 0x6 : INVOKESTATIC
       java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
       // arguments:
-      "\u0001 "
+      "\u0001 " //linijki 239-243 generują one kod wywołania metody konkatenacji stałych łańcuchowych w taki sposób, aby zminimalizować czas wykonania, zawartość stałej łańcuchowej, która ma zostać połączona bedzie wynosic "\u0001 ", metoda ta zwraca ciąg znaków utworzony przez konkatenację stałych łańcuchów
     ]
     INVOKEVIRTUAL java/io/PrintStream.print (Ljava/lang/String;)V
    L16
